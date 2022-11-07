@@ -10,22 +10,29 @@ let width = window.innerWidth || document.documentElement.clientWidth || documen
 let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
 
-// const map = vl.markGeoshape({fill: '#ddd', stroke: '#fff', strokeWidth: 1})
-//   .data(vl.topojson(topo).feature('nzl_subunits'))
-
+const ExemploVis = () => {
+    const topo = JSON.parse("public/data/nz-topo.json");
+        
+    const map = vl.markGeoshape({fill: '#ddd', stroke: '#fff', strokeWidth: 1})
+    .data(vl.topojson(topo).feature('nzl_subunits'));
+    
+    console.log(map.width(890).height(500).toSpec())
+    return map.width(890).height(500).render();
+}
+    
 
 const Vis = () => {
   return (
     <React.Fragment>
         <div>
-            afsfdasf
-            screenWidth= {width}
-            
+            <p>         
+                screenWidth= {width}
+            </p>
         </div>
         <div>
-            {/* {map.width(width*0.45)
-    .height(500).render()} */}
+            {ExemploVis()}
         </div>
+        <p>aaa</p>
     </React.Fragment>
   );
 }
